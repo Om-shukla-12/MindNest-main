@@ -113,7 +113,15 @@ def home():
     }
     return render_template('index.html', user=user)
 
-
+@app.route('/profile')
+@login_required
+def profile():
+    user = {
+        "name": session.get('user_name'),
+        "email": session.get('user_email'),
+        "picture": session.get('user_picture')
+    }
+    return render_template('profile.html', user=user)
 
 @app.route('/logout')
 def logout():

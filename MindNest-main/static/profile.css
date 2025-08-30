@@ -1,0 +1,99 @@
+/* ===== Profile Page Styles ===== */
+
+/* Profile Info Section */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #3e2f1c;
+    font-weight: 500;
+}
+
+/* Profile Picture */
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid #c1a985;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Placeholder for no picture */
+.profile-pic-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #e8dbc6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    margin-bottom: 20px;
+    border: 3px solid #c1a985;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Actions */
+.profile-actions {
+    margin-top: 30px;
+}
+
+/* Button Styles */
+.btn {
+    background-color: #a66d2f;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1em;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #875826;
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    /* Inherits from .btn */
+}
+
+/* Nav Avatar */
+.nav-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    transition: border-color 0.3s;
+}
+
+.nav-avatar:hover {
+    border-color: #a66d2f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-info p {
+        font-size: 1em;
+    }
+
+    .profile-pic, .profile-pic-placeholder {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+    }
+}
