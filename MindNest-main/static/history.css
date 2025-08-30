@@ -21,6 +21,17 @@ nav {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     z-index: 1000;
 }
+.nav-auth {
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  background: #d7c2a6; /* darker beige */
+  border-radius: 6px;
+}
+
+.nav-auth:hover {
+  background: #c1a985;
+  color: #fff;
+}
 
 .nav-container {
     display: flex;

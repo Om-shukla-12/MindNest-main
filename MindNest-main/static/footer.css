@@ -7,6 +7,7 @@
     border-top: 2px solid #e0d4c2; /* Subtle border with beige tint */
     font-family: 'Poppins', sans-serif;
     text-align: center;
+    width: 100%;
 }
 
 .footer-content {

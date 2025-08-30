@@ -16,12 +16,12 @@
                 <a href="/dashboard">Dashboard</a>
                 <a href="/history">History</a>
                 {% if session.get('logged_in') %}
-                    <a href="/logout">Logout</a>
+                    <a href="/logout" class="nav-auth">Logout</a>
                     {% if session.get('user_picture') %}
                         <img src="{{ session.get('user_picture') }}" alt="{{ session.get('user_name') }}" class="nav-avatar" style="width:32px;height:32px;border-radius:50%;object-fit:cover;margin-left:12px;border:2px solid rgba(255,255,255,0.6);" />
                     {% endif %}
                 {% else %}
-                    <a href="/login">Login</a>
+                    <a href="/login" class="nav-auth">Login</a>
                 {% endif %}
             </div>
         </div>
