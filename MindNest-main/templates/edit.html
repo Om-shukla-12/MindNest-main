@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Journal Entry</title>
+    <link rel="stylesheet" href="/static/edit.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+</head>
+<body>
+<nav>
+    <div class="nav-flex">
+        <span class="logo">🧠 MindNest</span>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/history">History</a>
+            <a href="/analyze_face">Face Emotion</a>
+            {% if session.get('logged_in') %}
+                <a href="/logout" class="nav-auth">Logout</a>
+                {% if session.get('user_picture') %}
+                    <img src="{{ session.get('user_picture') }}" alt="{{ session.get('user_name') }}" class="nav-avatar" style="width:32px;height:32px;border-radius:50%;object-fit:cover;margin-left:12px;border:2px solid rgba(255,255,255,0.6);" />
+                {% endif %}
+            {% else %}
+                <a href="/login" class="nav-auth">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>Edit Entry</h2>
+    <form method="POST">
+        <textarea name="entry" required>{{ entry.text }}</textarea>
+        <div class="btn-group">
+            <button type="submit" class="save-btn">Save changes</button>
+            <button type="submit" formaction="/analyze" class="reanalyze-btn">Reanalyze</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

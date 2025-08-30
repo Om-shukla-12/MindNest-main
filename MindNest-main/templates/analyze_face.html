@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Face Emotion Detection - MindNest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='analyze_face.css') }}">
+</head>
+<body>
+<nav>
+    <div class="nav-flex">
+        <span class="logo">🧠 MindNest</span>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/history">History</a>
+            <a href="/analyze_face">Face Emotion</a>
+            {% if session.get('logged_in') %}
+                <a href="/logout" class="nav-auth">Logout</a>
+            {% else %}
+                <a href="/login" class="nav-auth">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h2>Face Emotion Detection</h2>
+    <div class="video-wrapper">
+        <video id="video" width="320" height="240"  autoplay></video>
+    </div>
+    <button id="capture-btn">Capture & Analyze</button>
+    <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+    <form id="webcamForm" method="POST" enctype="multipart/form-data" style="display:none;">
+        <input type="hidden" name="webcam_image" id="webcam_image">
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="error">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% if emotion %}
+    <div class="result-container">
+        <h3>Detected Emotion: {{ emotion }}</h3>
+        {% if suggestion %}
+            <div class="suggestion"><strong>Suggestion:</strong> {{ suggestion }}</div>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <span class="footer-logo">🧠 MindNest</span><br>
+            <span style="font-size:0.97em;color:#e3f2fd;">&copy; 2025 MindNest. All rights reserved.</span>
+        </div>
+        <div class="footer-center">
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy Policy</a>
+            <!-- <a href="/terms">Terms</a> -->
+        </div>
+        <div class="footer-right">
+            <span>Follow us:</span>
+            <a href="https://twitter.com/" target="_blank" aria-label="Twitter"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style="height:20px;width:20px;vertical-align:middle;"></a>
+            <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="height:20px;width:20px;vertical-align:middle;"></a>
+            <a href="mailto:support@mindnest.com" aria-label="Email"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/maildotru.svg" alt="Email" style="height:20px;width:20px;vertical-align:middle;"></a>
+        </div>
+    </div>
+</footer>
+<script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const captureBtn = document.getElementById('capture-btn');
+    const webcamForm = document.getElementById('webcamForm');
+    const webcamImage = document.getElementById('webcam_image');
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.srcObject = stream;
+            video.play();
+        });
+    }
+
+    captureBtn.onclick = function(e) {
+        e.preventDefault();
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob(function(blob) {
+            const reader = new FileReader();
+            reader.onloadend = function() {
+                webcamImage.value = reader.result;
+                webcamForm.submit();
+            };
+            reader.readAsDataURL(blob);
+        }, 'image/png');
+    };
+</script>
+</body>
+</html>

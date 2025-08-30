@@ -1,0 +1,75 @@
+/* static/footer.css */
+.footer {
+    background-color: #f5f0e6; /* Warm beige background */
+    color: #5a4633; /* Dark brownish text for contrast */
+    padding: 35px 25px;
+    margin-top: 50px;
+    border-top: 2px solid #e0d4c2; /* Subtle border with beige tint */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.footer-left, .footer-center, .footer-right {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Logo / Branding */
+.footer-logo {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #3e2f1c; /* Rich coffee brown */
+}
+
+/* Footer Links */
+.footer-center a {
+    color: #6b5640;
+    text-decoration: none;
+    margin: 0 14px;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-center a:hover {
+    color: #a66d2f; /* Warm golden brown accent */
+    transform: translateY(-2px);
+}
+
+/* Right Section - Social */
+.footer-right span {
+    margin-right: 12px;
+    font-weight: 500;
+}
+
+.footer-right img {
+    height: 22px;
+    width: 22px;
+    vertical-align: middle;
+    opacity: 0.75;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    filter: sepia(30%) saturate(120%) hue-rotate(10deg); /* subtle warm tint */
+}
+
+.footer-right a:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
+    }
+}
