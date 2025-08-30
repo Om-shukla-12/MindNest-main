@@ -36,7 +36,7 @@
             <a href="/">Home</a>
             <a href="/dashboard">Dashboard</a>
             <a href="/history">History</a>
-            <a href="/analyze_face">Face Emotion</a>
+            <!-- <a href="/analyze_face">Face Emotion</a> -->
              <a href="{{ url_for('export_csv') }}" class="btn export-btn">Export as CSV</a>
             {% if session.get('logged_in') %}
                 <a href="{{ url_for('logout') }}" class="nav-auth">Logout</a>
@@ -81,7 +81,7 @@
     <div class="footer-content">
         <div class="footer-left">
             <span class="footer-logo">🧠 MindNest</span><br>
-            <span style="font-size:0.97em;color:#e3f2fd;">&copy; 2025 MindNest. All rights reserved.</span>
+            <span style="font-size:0.97em;color:#000000;">&copy; 2025 MindNest. All rights reserved.</span>
         </div>
         <div class="footer-center">
             <a href="/about">About</a>

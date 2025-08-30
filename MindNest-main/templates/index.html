@@ -15,7 +15,6 @@
                 <a href="/">Home</a>
                 <a href="/dashboard">Dashboard</a>
                 <a href="/history">History</a>
-                <a href="/analyze_face">Face Emotion</a>
                 {% if session.get('logged_in') %}
                     <a href="/logout">Logout</a>
                     {% if session.get('user_picture') %}
@@ -30,9 +29,11 @@
 
     <div class="main-card">
         <h2>How are you feeling today?</h2>
-        <form id="journalForm" method="POST" action="/analyze" autocomplete="off">
+    <form id="journalForm" method="POST" action="/analyze" autocomplete="off">
             <div class="textarea-wrapper">
     <textarea name="entry" id="entry" placeholder="Type or speak your journal entry..."></textarea>
+
+    <button> <a href="/analyze_face" style="color: white; text-decoration: none;">Face Emotion</a> </button>
     <button type="button" id="micBtn" class="mic-button">🎤</button>
 
   <button type="submit">Submit</button>
@@ -40,7 +41,6 @@
 
             <div class="warning" id="warning">Please enter some text.</div>
             
-        </form>
         <br>
         
     </div>
@@ -49,13 +49,13 @@
     <div class="footer-content">
         <div class="footer-left">
             <span class="footer-logo">🧠 MindNest</span><br>
-            <span style="font-size:0.97em;color:#e3f2fd;">&copy; 2025 MindNest. All rights reserved.</span>
+            <span style="font-size:0.97em;color:#000000;">&copy; 2025 MindNest. All rights reserved.</span>
         </div>
         <div class="footer-center">
             <a href="/about">About</a>
             <a href="/contact">Contact</a>
             <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms</a>
+            <!-- <a href="/terms">Terms</a> -->
         </div>
         <div class="footer-right">
             <span>Follow us:</span>

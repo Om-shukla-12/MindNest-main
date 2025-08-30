@@ -1,4 +1,4 @@
-/* General Reset */
+/* ===== Reset ===== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,14 +7,14 @@
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom right, #e3f2fd, #fff);
+    background: #faf6f0; /* soft beige */
     padding-top: 100px;
-    color: #333;
+    color: #3e2f1c; /* warm dark brown */
 }
 
-/* Navbar */
+/* ===== Navbar ===== */
 nav {
-    background: #fff3cd;
+    background: #e8dbc6; /* beige navbar */
     padding: 16px 32px;
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -30,22 +30,26 @@ nav {
     margin: auto;
 }
 
-/* logo */
+.logo {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #3e2f1c;
+}
 
 .nav-links a {
     margin-left: 24px;
     text-decoration: none;
-    color: #222;
+    color: #5a4633;
     font-weight: 500;
     font-size: 1rem;
     transition: color 0.2s;
 }
 
 .nav-links a:hover {
-    color: #000;
+    color: #a66d2f;
 }
 
-/* Page Container */
+/* ===== Page Container ===== */
 .history-container {
     max-width: 680px;
     margin: auto;
@@ -56,15 +60,17 @@ nav {
     font-size: 2.2rem;
     margin-bottom: 24px;
     text-align: center;
+    color: #5a4633;
 }
 
-/* Entry Cards */
+/* ===== Entry Cards ===== */
 .entry-card {
     background: #fff;
     border-radius: 16px;
     padding: 24px;
     margin-bottom: 24px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid #a66d2f;
     transition: transform 0.2s ease;
 }
 
@@ -74,18 +80,18 @@ nav {
 
 .timestamp {
     font-size: 0.95rem;
-    color: #666;
+    color: #7a6b59;
     margin-bottom: 12px;
 }
 
 .text {
     font-size: 1.1rem;
     margin-bottom: 16px;
-    color: #222;
+    color: #3e2f1c;
     line-height: 1.5;
 }
 
-/* Tags */
+/* ===== Tags ===== */
 .tags {
     display: flex;
     gap: 12px;
@@ -102,23 +108,23 @@ nav {
 }
 
 .mood-tag {
-    background: #dbeafe;
-    color: #111;
+    background: #f0e6d8; /* light beige */
+    color: #5a4633;
 }
 
 .emotion-tag {
-    background: #fef3c7;
-    color: #111;
+    background: #e8dbc6;
+    color: #3e2f1c;
 }
 
-/* Suggestion */
+/* ===== Suggestion ===== */
 .suggestion {
     font-style: italic;
-    color: #555;
+    color: #5a4633;
     margin-bottom: 16px;
 }
 
-/* Action Buttons */
+/* ===== Action Buttons ===== */
 .actions {
     display: flex;
     gap: 12px;
@@ -134,29 +140,31 @@ nav {
     transition: all 0.2s ease;
 }
 
+/* Edit button */
 .btn.edit {
     background: #fff;
-    border: 2px solid #007bff;
-    color: #007bff;
+    border: 2px solid #a66d2f;
+    color: #a66d2f;
 }
 
 .btn.edit:hover {
-    background: #007bff;
+    background: #a66d2f;
     color: #fff;
 }
 
+/* Delete button */
 .btn.delete {
     background: #fff;
-    border: 2px solid #dc3545;
-    color: #dc3545;
+    border: 2px solid #c62828;
+    color: #c62828;
 }
 
 .btn.delete:hover {
-    background: #dc3545;
+    background: #c62828;
     color: #fff;
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 600px) {
     .nav-links a {
         margin-left: 16px;
@@ -169,22 +177,17 @@ nav {
     }
 }
 
-.logo {
-    font-weight: bold;
-    font-size: 1.4rem;
-    color: #333;
-}
-
+/* ===== Print Mode ===== */
 @media print {
-        body {
-            background-color: white;
-        }
-        nav, .footer, .actions, .history-header {
-            display: none !important;
-        }
-        .entry-card {
-            box-shadow: none;
-            border: 1px solid #ccc;
-            page-break-inside: avoid;
-        }
+    body {
+        background-color: white;
     }
+    nav, .footer, .actions, .history-header {
+        display: none !important;
+    }
+    .entry-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+}

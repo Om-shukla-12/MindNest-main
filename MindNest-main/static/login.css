@@ -1,16 +1,18 @@
+/* ===== Reset & Global ===== */
 body {
-    background: linear-gradient(to bottom right, #fffde7, #fff3e0);
+  background: #faf6f0; /* soft beige */
   font-family: 'Poppins', sans-serif;
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  color: #3e2f1c;
 }
 
-
+/* ===== Login Card ===== */
 .login-card {
-  background: white;
+  background: #fff;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   width: 90%;
@@ -19,8 +21,9 @@ body {
   text-align: center;
 }
 
+/* ===== Header ===== */
 .login-header {
-  background: linear-gradient(to right, #fae849, #f7eea9);
+  background: #e8dbc6; /* beige top strip */
   border-radius: 12px 12px 0 0;
   padding: 16px 0;
   margin: -32px -24px 16px -24px;
@@ -38,25 +41,36 @@ body {
   font-size: 1.4em;
   margin: 0;
   font-weight: 600;
-  color: #333;
+  color: #3e2f1c;
 }
 
 h2 {
   font-size: 1.6em;
   margin-bottom: 24px;
-  color: #333;
+  color: #5a4633;
 }
 
+/* ===== Inputs ===== */
 .login-form input[type="text"],
 .login-form input[type="password"] {
   width: 92%;
   padding: 14px;
   margin-bottom: 14px;
-  border: 1px solid #ccc;
+  border: 1px solid #c1a985;
   border-radius: 8px;
   font-size: 1em;
+  background: #fff;
+  color: #3e2f1c;
+  transition: border 0.2s;
 }
 
+.login-form input:focus {
+  border-color: #a66d2f;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(166, 109, 47, 0.25);
+}
+
+/* ===== Google Button ===== */
 .google-btn {
   display: flex;
   align-items: center;
@@ -65,30 +79,32 @@ h2 {
   padding: 12px;
   width: 100%;
   border-radius: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #d7c2a6;
   background: #fff;
   font-weight: 500;
   font-size: 1em;
   margin-bottom: 20px;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .google-btn:hover {
-  background: #f8f8f8;
+  background: #f5e9da;
 }
 
+/* ===== Divider ===== */
 .divider {
   display: flex;
   align-items: center;
   margin-bottom: 16px;
-  color: #aaa;
+  color: #7a6b59;
 }
 
 .divider hr {
   flex: 1;
   height: 1px;
   border: none;
-  background-color: #ddd;
+  background-color: #d7c2a6;
 }
 
 .divider-text {
@@ -96,20 +112,23 @@ h2 {
   font-size: 0.9em;
 }
 
+/* ===== Remember Me ===== */
 .remember-me {
   display: flex;
   align-items: center;
   font-size: 0.95em;
   margin: 8px 0 16px 0;
+  color: #5a4633;
 }
 
 .remember-me input {
   margin-right: 8px;
 }
 
+/* ===== Login Button ===== */
 .login-btn {
-  background: #479eff;
-  color: white;
+  background: #a66d2f;
+  color: #fff;
   border: none;
   width: 100%;
   padding: 14px;
@@ -117,24 +136,34 @@ h2 {
   font-size: 1em;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .login-btn:hover {
-  background: #3a90e6;
+  background: #875826;
+  transform: translateY(-2px);
 }
 
+/* ===== Error Text ===== */
 .error {
-  color: #e53935;
+  color: #c62828;
   margin-top: 10px;
 }
 
+/* ===== Signup Text ===== */
 .signup-text {
   margin-top: 18px;
   font-size: 0.95em;
+  color: #5a4633;
 }
 
 .signup-text a {
-  color: #3b50f4;
+  color: #a66d2f;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s;
+}
+
+.signup-text a:hover {
+  color: #875826;
 }

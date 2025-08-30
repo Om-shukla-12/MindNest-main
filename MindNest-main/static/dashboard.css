@@ -1,4 +1,4 @@
-/* Reset */
+/* ===== Reset ===== */
 * {
     margin: 0;
     padding: 0;
@@ -7,20 +7,19 @@
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom, #f8f9ff, #eaf6ff);
+    background: #faf6f0; /* beige background */
     padding-top: 90px;
-    color: #333;
+    color: #3e2f1c; /* warm brown */
 }
 
-/* Navbar */
+/* ===== Navbar ===== */
 nav {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: #fff3c4;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-    border-radius: 0 0 20px 20px;
+    background: #e8dbc6; /* beige navbar */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     padding: 18px 32px;
     z-index: 1000;
 }
@@ -34,27 +33,19 @@ nav {
 }
 
 .logo {
-    display: flex;
-    align-items: center;
     font-size: 1.5rem;
     font-weight: 600;
-    color: #1f1f1f;
-    gap: 8px;
-}
-
-.logo img {
-    height: 30px;
-    width: 30px;
+    color: #3e2f1c;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+    gap: 28px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #222;
+    color: #5a4633;
     font-weight: 500;
     font-size: 1rem;
     padding: 6px 10px;
@@ -63,41 +54,45 @@ nav {
 }
 
 .nav-links a:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: #d7c2a6;
+    color: #fff;
 }
 
-/* Dashboard Content */
+/* ===== Dashboard Container ===== */
 .container {
     max-width: 800px;
     margin: 0 auto;
     background: #fff;
     padding: 30px 24px;
     border-radius: 20px;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     text-align: center;
 }
 
-/* Title */
+/* ===== Title ===== */
 h2 {
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 30px;
+    color: #5a4633;
 }
 
-/* Charts */
+/* ===== Charts ===== */
 canvas {
     width: 100% !important;
     margin-bottom: 30px;
-    background: white;
+    background: #fff;
     padding: 20px;
     border-radius: 16px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+    border: 1px solid #c1a985;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
 }
 
-/* Legend */
+/* ===== Legend ===== */
 .legend {
     margin-top: 10px;
     font-size: 1rem;
+    color: #3e2f1c;
 }
 
 .legend b {
@@ -105,20 +100,22 @@ canvas {
     margin-bottom: 8px;
 }
 
-/* Back Link */
+/* ===== Back Link ===== */
 a.back-link {
     display: inline-block;
     margin-top: 25px;
-    color: #007bff;
+    color: #a66d2f;
     font-weight: bold;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 a.back-link:hover {
+    color: #875826;
     text-decoration: underline;
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
     .nav-flex {
         flex-direction: column;

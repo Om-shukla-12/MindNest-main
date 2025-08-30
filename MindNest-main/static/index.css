@@ -1,16 +1,19 @@
+/* ===== Reset & Global ===== */
 body {
-    font-family: 'Inter', sans-serif;
-    background: #fff7f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #faf6f0; /* soft beige */
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #3e2f1c; /* warm brown */
 }
 
+/* ===== Navbar ===== */
 nav {
     width: 100%;
-    background: linear-gradient(90deg, #fcd9b8, #f8c3ae);
+    background: #e8dbc6; /* beige navbar */
     padding: 14px 24px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     border-radius: 0 0 18px 18px;
@@ -30,21 +33,22 @@ nav {
 .logo {
     font-size: 1.4em;
     font-weight: 600;
-    color: #333;
+    color: #3e2f1c;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: #5a4633;
     margin-left: 20px;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: #1976d2;
+    color: #a66d2f;
 }
 
+/* ===== Main Card ===== */
 .main-card {
     margin-top: 60px;
     background: #fff;
@@ -54,37 +58,42 @@ nav {
     text-align: center;
     width: 90%;
     max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h2 {
     font-weight: 600;
-    color: #333;
+    color: #5a4633;
     margin-bottom: 30px;
 }
 
+/* ===== Textarea ===== */
 textarea {
     width: 100%;
     height: 150px;
-    border: 1px solid #ddd;
+    border: 1px solid #c1a985;
     border-radius: 12px;
-    padding: 16px;
+    padding: 5px;
     font-size: 1em;
-    font-family: 'Inter', sans-serif;
+    font-family: inherit;
     resize: none;
-    box-sizing: border-box;
     background: #fff;
     box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
     outline: none;
+    color: #3e2f1c;
 }
 
 textarea:focus {
-    border-color: #a3c9f7;
-    box-shadow: 0 0 0 3px rgba(163, 201, 247, 0.4);
+    border-color: #a66d2f;
+    box-shadow: 0 0 0 3px rgba(166, 109, 47, 0.25);
 }
 
+/* ===== Button ===== */
 button {
     margin-top: 20px;
-    background-color: #4e89ff;
+    background-color: #a66d2f;
     color: #fff;
     border: none;
     padding: 12px 28px;
@@ -92,35 +101,39 @@ button {
     border-radius: 25px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background-color: #3572e2;
+    background-color: #875826;
+    transform: translateY(-2px);
 }
 
+/* ===== Warning ===== */
 .warning {
-    color: #888;
+    color: #7a6b59;
     margin-top: 12px;
     font-size: 0.95em;
     display: none;
 }
 
+/* ===== History Link ===== */
 .view-history {
     margin-top: 22px;
     display: inline-block;
     font-weight: 500;
     font-size: 1.05em;
-    color: #007bff;
+    color: #a66d2f;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 .view-history:hover {
+    color: #875826;
     text-decoration: underline;
 }
 
-/* Voice css */
-
+/* ===== Voice Button ===== */
 .mic-container {
   position: absolute;
   bottom: 10px;
@@ -146,17 +159,17 @@ button:hover {
 
 .mic-button.active {
   animation: pulse 1s infinite;
-  background: #eaf4ff;
+  background: #f5e9da;
 }
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+    box-shadow: 0 0 0 0 rgba(166, 109, 47, 0.4);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+    box-shadow: 0 0 0 10px rgba(166, 109, 47, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    box-shadow: 0 0 0 0 rgba(166, 109, 47, 0);
   }
 }

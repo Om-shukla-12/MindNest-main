@@ -1,36 +1,43 @@
+/* ===== Reset & Global ===== */
 body {
-  background: #fffefc;
+  background: #faf6f0; /* soft beige */
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding-top: 80px;
+  color: #3e2f1c;
 }
 
+/* ===== Container ===== */
 .container {
   max-width: 700px;
   margin: 40px auto;
   background: #fff;
   padding: 40px 32px;
   border-radius: 20px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
+/* ===== Title ===== */
 h2 {
   font-size: 1.8em;
   text-align: center;
   margin-bottom: 30px;
-  color: #333;
+  color: #5a4633;
 }
 
+/* ===== Entry Section ===== */
 .entry {
   font-size: 1.1em;
-  background: #f9f9ff;
+  background: #fff;
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 18px;
   line-height: 1.6;
-  border-left: 4px solid #36a2eb;
+  border-left: 4px solid #a66d2f; /* golden brown accent */
+  color: #3e2f1c;
 }
 
+/* ===== Badges ===== */
 .badges {
   margin: 20px 0;
 }
@@ -43,31 +50,37 @@ h2 {
   border-radius: 30px;
   margin-right: 12px;
   margin-bottom: 10px;
+  background: #f5e9da;
+  color: #5a4633;
 }
 
-.mood-positive { background: #a5d6a7; color: #1b5e20; }
-.mood-neutral { background: #ffe082; color: #5d4037; }
-.mood-negative { background: #ef9a9a; color: #b71c1c; }
+/* Mood colors (subtle warm tones) */
+.mood-positive { background: #d6e4c4; color: #2e4600; }
+.mood-neutral { background: #f0e6d8; color: #5a4633; }
+.mood-negative { background: #f4c7c7; color: #7a1c1c; }
 
-.emotion-joy { background: #fff59d; color: #333; }
-.emotion-sadness { background: #90caf9; color: #0d47a1; }
-.emotion-anger { background: #ef5350; color: white; }
-.emotion-surprise { background: #ffcc80; color: #5d4037; }
-.emotion-fear { background: #ba68c8; color: white; }
-.emotion-disgust { background: #81c784; color: #1b5e20; }
-.emotion-neutral { background: #cfd8dc; color: #37474f; }
+/* Emotion colors */
+.emotion-joy { background: #ffe9a9; color: #5a4633; }
+.emotion-sadness { background: #c3d6f0; color: #2a3e66; }
+.emotion-anger { background: #e88b8b; color: #fff; }
+.emotion-surprise { background: #f7d3a5; color: #5a4633; }
+.emotion-fear { background: #d2b5e5; color: #fff; }
+.emotion-disgust { background: #b7d9a9; color: #1b5e20; }
+.emotion-neutral { background: #e0d4c2; color: #3e2f1c; }
 
+/* ===== Suggestion ===== */
 .suggestion {
-  background: #e3f2fd;
-  border-left: 5px solid #42a5f5;
+  background: #f0e6d8;
+  border-left: 5px solid #a66d2f;
   padding: 18px;
   border-radius: 10px;
   margin-top: 20px;
   font-size: 1.05em;
   line-height: 1.5;
+  color: #3e2f1c;
 }
 
-/* Action Buttons */
+/* ===== Action Buttons ===== */
 .actions {
     display: flex;
     justify-content: center;
@@ -88,35 +101,33 @@ h2 {
     display: inline-block;
 }
 
-/* Back to Journal / Dashboard buttons */
+/* Back / Edit Button */
 .btn.edit {
     background: #fff;
-    border: 2px solid #007bff;
-    color: #007bff;
+    border: 2px solid #a66d2f;
+    color: #a66d2f;
 }
 
 .btn.edit:hover {
-    background: #007bff;
+    background: #a66d2f;
     color: #fff;
 }
 
-/* Save as PDF button */
+/* Save as PDF / Delete Button */
 .btn.delete {
     background: #fff;
-    border: 2px solid #dc3545;
-    color: #dc3545;
+    border: 2px solid #c62828;
+    color: #c62828;
 }
 
 .btn.delete:hover {
-    background: #dc3545;
+    background: #c62828;
     color: #fff;
 }
 
-
-
-/* Navbar */
+/* ===== Navbar ===== */
 nav {
-    background: #fff3cd;
+    background: #e8dbc6;
     padding: 16px 32px;
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -132,6 +143,12 @@ nav {
     margin: auto;
 }
 
+.logo {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #3e2f1c;
+}
+
 .nav-links {
     display: flex;
     gap: 20px;
@@ -139,38 +156,31 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: #222;
+    color: #5a4633;
     font-weight: 500;
     font-size: 1rem;
     transition: color 0.2s;
 }
 
 .nav-links a:hover {
-    color: #000;
+    color: #a66d2f;
 }
 
-
-.logo {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #333;
-}
-
-/* Section title */
+/* ===== Section Title ===== */
 .section-title {
   font-size: 1.8rem;
   font-weight: bold;
   margin: 2rem 0 1rem;
-  color: #333;
+  color: #5a4633;
   text-align: center;
 }
 
+/* ===== Video Cards ===== */
 .video-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     margin-top: 20px;
-    
 }
 
 .video-card {
@@ -188,7 +198,7 @@ nav {
 
 .video-card img {
     width: 100%;
-    height: 200px; /* adjust */
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -198,18 +208,18 @@ nav {
     display: block;
     font-size: 16px;
     font-weight: 500;
-    color: #2d3748;
+    color: #5a4633;
     text-decoration: none;
 }
 
 .video-card a:hover {
-    color: #007bff;
+    color: #a66d2f;
 }
 
 .video-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 15px;
-    text-align: left;   /* forces heading to align left */
-    display: block;
+    text-align: left;
+    color: #3e2f1c;
 }

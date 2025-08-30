@@ -1,17 +1,20 @@
+/* ===== Reset ===== */
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(to bottom right, #dbeafe, #fff7ed);
-    color: #111;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #faf6f0; /* soft beige */
+    color: #3e2f1c; /* warm brown */
 }
 
+/* ===== Navbar ===== */
 nav {
-    background-color: #fef9c3;
+    background-color: #e8dbc6; /* beige navbar */
     padding: 20px 40px;
-    border-bottom: 1px solid #e2e8f0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-bottom: 1px solid #d7c2a6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .nav-flex {
@@ -23,27 +26,29 @@ nav {
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #111;
+    color: #3e2f1c;
 }
 
 .nav-links a {
     margin-left: 20px;
     text-decoration: none;
-    color: #111;
+    color: #5a4633;
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
+    color: #a66d2f;
 }
 
+/* ===== Container ===== */
 .container {
     max-width: 600px;
     margin: 60px auto;
-    background: #ffffff;
+    background: #fff;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
 h2 {
@@ -51,21 +56,27 @@ h2 {
     margin-bottom: 20px;
     font-size: 28px;
     font-weight: bold;
+    color: #5a4633;
 }
 
+/* ===== Textarea ===== */
 textarea {
     width: 100%;
     height: 200px;
     padding: 16px;
     font-size: 16px;
-    border: 1px solid #d1d5db;
+    border: 1px solid #c1a985;
     border-radius: 12px;
     resize: vertical;
     box-sizing: border-box;
     font-family: inherit;
     line-height: 1.5;
+    background: #fff;
+    color: #3e2f1c;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
 }
 
+/* ===== Button Group ===== */
 .btn-group {
     display: flex;
     justify-content: center;
@@ -73,25 +84,28 @@ textarea {
     gap: 16px;
 }
 
+/* Save Button */
 .save-btn {
-    background-color: #2563eb;
+    background-color: #a66d2f;
     color: white;
     border: none;
     padding: 10px 22px;
     font-size: 15px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .save-btn:hover {
-    background-color: #1e40af;
+    background-color: #875826;
+    transform: translateY(-2px);
 }
 
+/* Reanalyze Button */
 .reanalyze-btn {
     background-color: white;
-    color: #dc2626;
-    border: 2px solid #dc2626;
+    color: #a66d2f;
+    border: 2px solid #a66d2f;
     padding: 10px 22px;
     font-size: 15px;
     border-radius: 8px;
@@ -100,5 +114,5 @@ textarea {
 }
 
 .reanalyze-btn:hover {
-    background-color: #fee2e2;
+    background-color: #f5e9da;
 }
