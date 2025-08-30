@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mood Dashboard</title>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-flex">
+        <div class="logo">
+           🧠 MindNest
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            
+            <a href="{{ url_for('history') }}">History</a>
+           
+            {% if session.get('logged_in') %}
+                <a href="{{ url_for('logout') }}" class="nav-auth">Logout</a>
+                {% if session.get('user_picture') %}
+                    <img src="{{ session.get('user_picture') }}" alt="{{ session.get('user_name') }}" class="nav-avatar" style="width:32px;height:32px;border-radius:50%;object-fit:cover;margin-left:12px;border:2px solid rgba(255,255,255,0.6);" />
+                {% endif %}
+            {% else %}
+                <a href="{{ url_for('login') }}" class="nav-auth">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<!-- Dashboard Content -->
+<div class="container">
+    <h2>Mood & Emotion Dashboard</h2>
+
+    <!-- Mood Chart -->
+    <canvas id="moodChart" height="400"></canvas>
+
+    <!-- Emotion Chart -->
+    <canvas id="emotionChart" height="400"></canvas>
+
+    <div class="legend">
+    <b>Sentiment Mapping:</b> Positive = 1, Neutral = 0, Negative = -1<br>
+    <b>Emotion Mapping:</b> Joy/Excitement = 2, Surprise = 1, Neutral = 0, Sadness = -1, Nervousness = -2, Anger = -3, Fear = -4, Disgust = -5
+    </div>
+
+    <!-- Back Link -->
+    <a class="back-link" href="{{ url_for('home') }}">← Back to Journal</a>
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <span class="footer-logo">🧠 MindNest</span><br>
+            <span style="font-size:0.97em;color:#e3f2fd;">&copy; 2025 MindNest. All rights reserved.</span>
+        </div>
+        <div class="footer-center">
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms</a>
+        </div>
+        <div class="footer-right">
+            <span>Follow us:</span>
+            <a href="https://twitter.com/" target="_blank" aria-label="Twitter"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style="height:20px;width:20px;vertical-align:middle;"></a>
+            <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="height:20px;width:20px;vertical-align:middle;"></a>
+            <a href="mailto:support@mindnest.com" aria-label="Email"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/maildotru.svg" alt="Email" style="height:20px;width:20px;vertical-align:middle;"></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Chart JS Script -->
+
+<script>
+    const dates = {{ dates|tojson|safe }};
+    const moodsRaw = {{ moods|tojson|safe }};
+    const emotionsRaw = {{ emotions|tojson|safe }};
+
+    // --- Mood Mapping (No changes needed here, it is correct) ---
+    const moodMap = { 'positive': 1, 'neutral': 0, 'negative': -1 };
+    const moods = moodsRaw.map(m => moodMap[m?.toLowerCase?.()] ?? 0);
+
+    // ✨ --- FIX: Expanded Emotion Map ---
+    // This map now understands all the emotions your analysis can provide.
+    const emotionMap = {
+        // Positive Emotions
+        'joy': 2,
+        'excitement': 2,
+        'gratitude': 2,
+        'love': 2,
+        'admiration': 2,
+        'optimism': 2,
+        'surprise': 1,
+
+        // Neutral Emotion
+        'neutral': 0,
+
+        // Negative Emotions
+        'sadness': -1,
+        'disappointment': -1,
+        'grief': -1,
+        'remorse': -1,
+        'nervousness': -2,
+        'anger': -3,
+        'fear': -4,
+        'disgust': -5
+    };
+    const emotions = emotionsRaw.map(e => emotionMap[e?.toLowerCase?.()] ?? 0);
+
+    // Mood Chart
+    new Chart(document.getElementById('moodChart'), {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'Mood (Sentiment)',
+                data: moods,
+                borderColor: '#36a2eb',
+                backgroundColor: 'rgba(54,162,235,0.15)',
+                fill: true,
+                tension: 0.3,
+                pointRadius: 5,
+                pointBackgroundColor: '#36a2eb',
+            }]
+        },
+        options: {
+            plugins: {
+                title: { display: true, text: 'Mood (Sentiment) Over Time', font: { size: 20 } },
+                legend: { display: true, position: 'top' },
+                tooltip: { enabled: true }
+            },
+            scales: {
+                x: { title: { display: true, text: 'Date' }, grid: { display: true } },
+                y: {
+                    title: { display: true, text: 'Sentiment Value' },
+                    grid: { display: true },
+                    min: -1, max: 1, ticks: { stepSize: 1 }
+                }
+            }
+        }
+    });
+
+    // Emotion Chart
+    new Chart(document.getElementById('emotionChart'), {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'Emotion',
+                data: emotions,
+                borderColor: '#ff6384',
+                backgroundColor: 'rgba(255,99,132,0.15)',
+                fill: true,
+                tension: 0.3,
+                pointRadius: 5,
+                pointBackgroundColor: '#ff6384',
+            }]
+        },
+        options: {
+            plugins: {
+                title: { display: true, text: 'Emotion Over Time', font: { size: 20 } },
+                legend: { display: true, position: 'top' },
+                tooltip: { enabled: true }
+            },
+            scales: {
+                x: { title: { display: true, text: 'Date' }, grid: { display: true } },
+                y: {
+                    title: { display: true, text: 'Emotion Value' },
+                    grid: { display: true },
+                    min: -5, max: 2, ticks: { stepSize: 1 }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
