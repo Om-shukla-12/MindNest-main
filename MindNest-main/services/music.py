@@ -27,6 +27,8 @@ def get_music_recommendations(mood: str, limit: int = 2):
     Searches Spotify for playlists related to a mood (e.g., happy, sad).
     """
     token = get_access_token()
+    if not token:
+        return []
     url = f"https://api.spotify.com/v1/search?q={mood}%20mood&type=playlist&limit={limit}"
     headers = {"Authorization": f"Bearer {token}"}
 
@@ -36,10 +38,11 @@ def get_music_recommendations(mood: str, limit: int = 2):
 
     playlists = []
     for item in data.get("playlists", {}).get("items", []):
-        playlists.append({
-            "title": item["name"],
-            "id": item["id"],  # embed needs this
-            "url": item["external_urls"]["spotify"]
-        })
+        if item:
+            playlists.append({
+                "title": item["name"],
+                "id": item["id"],  # embed needs this
+                "url": item["external_urls"]["spotify"]
+            })
     
     return playlists
