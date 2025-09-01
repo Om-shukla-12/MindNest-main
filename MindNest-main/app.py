@@ -29,7 +29,7 @@ load_dotenv()
 
 # Flask app setup
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///journal.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///c:/Users/OM/OneDrive/Desktop/MindNest-main/journal.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "dev_secret_key" # IMPORTANT: Change for production
 db.init_app(app)
@@ -72,26 +72,18 @@ def login():
     error = None
     if request.method == 'POST':
         # This block handles the simple username/password form
-        if request.form.get('username') == USERNAME and request.form.get('password') == PASSWORD:
-            
-            user = User.query.filter_by(email="local@example.com").first()
-            if not user:
-                user = User(
-                    name="Local Test User",
-                    email="local@example.com",
-                    is_google_user=False
-                )
-                db.session.add(user)
-                db.session.commit()
+        email = request.form.get('username')
+        password = request.form.get('password')
 
+        user = User.query.filter_by(email=email).first()
+        if user and user.password == password:
             session.clear()
             session['logged_in'] = True
             session['user_id'] = user.id
             session['user_name'] = user.name
             session['user_email'] = user.email
-            session['user_picture'] = None
-            # Adds the required user_id to the session for the local user
-           
+            session['user_picture'] = user.picture if hasattr(user, 'picture') else None
+
             print("SESSION AFTER LOGIN:", session)
             return redirect(url_for('home'))
         else:
@@ -99,6 +91,38 @@ def login():
 
     google_client_id = os.getenv("GOOGLE_CLIENT_ID")
     return render_template('login.html', error=error, google_client_id=google_client_id)
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    error = None
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+
+        if not name or not email or not password or not confirm_password:
+            error = "Please fill in all fields."
+        elif password != confirm_password:
+            error = "Passwords do not match."
+        else:
+            existing_user = User.query.filter_by(email=email).first()
+            if existing_user:
+                error = "Email already registered."
+            else:
+                new_user = User(
+                    name=name,
+                    email=email,
+                    is_google_user=False
+                )
+                # You should hash the password before saving in production
+                # For now, we store it as plain text (not recommended)
+                new_user.password = password
+                db.session.add(new_user)
+                db.session.commit()
+                return redirect(url_for('login'))
+
+    return render_template('signup.html', error=error)
 
 
 
@@ -330,13 +354,13 @@ def analyze_face():
             header, encoded = img_data.split(',', 1)
             img_bytes = base64.b64decode(encoded)
             image = Image.open(BytesIO(img_bytes))
-            upload_folder = os.path.join('static', 'uploads')
+            upload_folder = os.path.join(app.root_path, 'static', 'uploads')
             if not os.path.exists(upload_folder):
                 os.makedirs(upload_folder)
             filepath = os.path.join(upload_folder, 'webcam_capture.png')
             image.save(filepath)
             try:
-                result = DeepFace.analyze(img_path=filepath, actions=['emotion'], enforce_detection=False)
+                result = DeepFace.analyze(img_path=filepath, actions=['emotion'], enforce_detection=False, detector_backend='retinaface', align=True)
                 if isinstance(result, list):
                     emotion = result[0].get('dominant_emotion', 'No face detected')
                 else:
@@ -363,23 +387,35 @@ def analyze_face():
                 flash('No selected file')
                 return redirect(request.url)
             if file:
-                upload_folder = os.path.join('static', 'uploads')
+                upload_folder = os.path.join(app.root_path, 'static', 'uploads')
                 if not os.path.exists(upload_folder):
                     os.makedirs(upload_folder)
                 filepath = os.path.join(upload_folder, file.filename)
                 file.save(filepath)
                 try:
-                    result = DeepFace.analyze(img_path=filepath, actions=['emotion'], enforce_detection=False)
+                    result = DeepFace.analyze(img_path=filepath, actions=['emotion'], enforce_detection=False, detector_backend='retinaface', align=True)
                     if isinstance(result, list):
                         emotion = result[0].get('dominant_emotion', 'No face detected')
                     else:
                         emotion = result.get('dominant_emotion', 'No face detected')
                     if emotion and emotion != 'No face detected':
-                        suggestion = get_detaile_suggestion('Neutral', emotion)
+                        suggestion = get_detailed_suggestion('Neutral', emotion)
                 except Exception as e:
                     flash(f'Error analyzing image: {e}')
                 os.remove(filepath)
     return render_template('analyze_face.html', emotion=emotion, suggestion=suggestion)
+
+@app.route('/about')
+def about():
+    return render_template('About.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     with app.app_context():

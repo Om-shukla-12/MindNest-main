@@ -9,6 +9,7 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
 
   <style>
     .recommendations-container {
@@ -120,15 +121,13 @@
 {% endif %}
 
 
-
-
-
   <div class="actions">
     <a href="{{ url_for('home') }}" class="btn edit">← Back to Journal</a>
     <a href="{{ url_for('dashboard') }}" class="btn edit">📊 View Dashboard</a>
     <button onclick="window.print()" class="btn delete">📄 Save as PDF</button>
   </div>
 </div>
+
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-left">
@@ -149,6 +148,7 @@
         </div>
     </div>
 </footer>
+
 <script>
   const mood = "{{ result.mood|lower }}";
   const emotion = "{{ result.sentiment|lower }}";
