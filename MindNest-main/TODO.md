@@ -1,4 +1,0 @@
-- [x] Update DeepFace.analyze calls to use detector_backend='retinaface' for better accuracy
-- [x] Add align=True to DeepFace.analyze for improved face alignment
-- [x] Fix typo in get_detaile_suggestion to get_detailed_suggestion
-- [x] Test the improved face detection - app runs successfully with new detector
