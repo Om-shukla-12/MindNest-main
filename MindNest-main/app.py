@@ -29,7 +29,7 @@ load_dotenv()
 
 # Flask app setup
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///c:/Users/OM/OneDrive/Desktop/MindNest-main/instance/journal.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "dev_secret_key" # IMPORTANT: Change for production
 db.init_app(app)
