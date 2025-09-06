@@ -29,7 +29,7 @@ load_dotenv()
 
 # Flask app setup
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///c:/Users/OM/OneDrive/Desktop/MindNest-main/MindNest-main/instance/journal.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///c:/Users/OM/OneDrive/Desktop/MindNest-main/instance/journal.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "dev_secret_key" # IMPORTANT: Change for production
 db.init_app(app)
@@ -228,7 +228,7 @@ def analyze():
     music_recs = get_music_recommendations(detected_mood)
 
     # 🎥 Get YouTube video recommendations
-    video_recs = get_media_recommendations(detected_mood, region="IN")[:2] 
+    video_recs = get_media_recommendations(detected_mood)[:2]
     
 
     # 📝 Save journal entry

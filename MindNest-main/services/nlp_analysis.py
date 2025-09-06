@@ -202,7 +202,17 @@ def analyze_text(text):
     # Step 1: Core analysis
     sentiment_label = sentiment_analyzer(text)[0]['label']
     emotion_result = emotion_classifier(text)
-    primary_emotion = emotion_result[0][0]['label'] if emotion_result and emotion_result[0] else "neutral"
+    print(f"DEBUG: emotion_result = {emotion_result}")
+    # Fix extraction of primary_emotion based on actual structure
+    if emotion_result and isinstance(emotion_result, list):
+        if isinstance(emotion_result[0], dict) and 'label' in emotion_result[0]:
+            primary_emotion = emotion_result[0]['label']
+        elif isinstance(emotion_result[0], list) and len(emotion_result[0]) > 0 and 'label' in emotion_result[0][0]:
+            primary_emotion = emotion_result[0][0]['label']
+        else:
+            primary_emotion = "neutral"
+    else:
+        primary_emotion = "neutral"
 
     # Step 2: Generate the new, full empathetic sentence.
     empathetic_sentence = generate_empathetic_sentence(text)

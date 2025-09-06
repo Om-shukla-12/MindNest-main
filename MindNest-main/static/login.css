@@ -167,3 +167,76 @@ h2 {
 .signup-text a:hover {
   color: #875826;
 }
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .login-card {
+    width: 95%;
+    padding: 24px 20px;
+  }
+  .login-header {
+    padding: 12px 0;
+    margin: -24px -20px 12px -20px;
+  }
+  .logo-img {
+    height: 35px;
+  }
+  .login-card h1 {
+    font-size: 1.2em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    padding: 12px;
+    font-size: 0.95em;
+  }
+  .google-btn {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  .login-btn {
+    padding: 12px;
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  .login-card {
+    width: 100%;
+    padding: 20px 16px;
+  }
+  .login-header {
+    padding: 10px 0;
+    margin: -20px -16px 10px -16px;
+  }
+  .logo-img {
+    height: 30px;
+  }
+  .login-card h1 {
+    font-size: 1.1em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  .google-btn {
+    padding: 8px;
+    font-size: 0.85em;
+  }
+  .login-btn {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  .signup-text {
+    font-size: 0.9em;
+  }
+}

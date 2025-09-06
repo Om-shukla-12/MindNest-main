@@ -176,15 +176,94 @@ nav {
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    nav {
+        padding: 12px 20px;
+    }
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .logo {
+        font-size: 1.2rem;
+    }
     .nav-links a {
-        margin-left: 16px;
+        margin-left: 0;
+        margin-top: 8px;
         font-size: 0.9rem;
     }
-
+    .history-container {
+        padding: 24px 12px;
+    }
+    .history-container h1 {
+        font-size: 1.8rem;
+    }
+    .entry-card {
+        padding: 20px;
+    }
+    .text {
+        font-size: 1rem;
+    }
+    .tags {
+        gap: 8px;
+    }
+    .tag {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+    }
+    .actions {
+        flex-direction: column;
+        gap: 8px;
+    }
     .btn {
         font-size: 0.9rem;
         padding: 6px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding: 10px 16px;
+    }
+    .nav-container {
+        gap: 8px;
+    }
+    .logo {
+        font-size: 1.1rem;
+    }
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+    .history-container {
+        padding: 20px 8px;
+    }
+    .history-container h1 {
+        font-size: 1.5rem;
+    }
+    .entry-card {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+    .timestamp {
+        font-size: 0.9rem;
+    }
+    .text {
+        font-size: 0.95rem;
+    }
+    .tags {
+        gap: 6px;
+    }
+    .tag {
+        font-size: 0.85rem;
+        padding: 3px 6px;
+    }
+    .suggestion {
+        font-size: 0.9rem;
+    }
+    .btn {
+        font-size: 0.85rem;
+        padding: 5px 12px;
     }
 }
 

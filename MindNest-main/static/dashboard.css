@@ -127,19 +127,66 @@ a.back-link:hover {
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
+    nav {
+        padding: 12px 20px;
+    }
     .nav-flex {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
-
+    .logo {
+        font-size: 1.3rem;
+    }
     .nav-links {
         flex-wrap: wrap;
         gap: 16px;
     }
-
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+    }
     .container {
         margin: 20px;
         padding: 20px;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    canvas {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding: 10px 16px;
+    }
+    .nav-flex {
+        gap: 8px;
+    }
+    .logo {
+        font-size: 1.2rem;
+    }
+    .nav-links {
+        gap: 12px;
+    }
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 3px 6px;
+    }
+    .container {
+        margin: 10px;
+        padding: 16px;
+    }
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+    canvas {
+        padding: 10px;
+    }
+    .legend {
+        font-size: 0.9rem;
     }
 }

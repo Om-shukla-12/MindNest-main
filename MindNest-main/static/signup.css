@@ -82,3 +82,50 @@ body {
 .login-container p a:hover {
   text-decoration: underline;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    max-width: 95%;
+    margin: 40px auto;
+    padding: 30px 24px;
+  }
+  .login-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 24px;
+  }
+  .login-container input {
+    padding: 12px 10px;
+    font-size: 0.95em;
+  }
+  .login-container .btn {
+    padding: 10px 0;
+    font-size: 1em;
+  }
+  .login-container p {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px 16px;
+  }
+  .login-container h2 {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+  }
+  .login-container input {
+    padding: 10px 8px;
+    font-size: 0.9em;
+  }
+  .login-container .btn {
+    padding: 8px 0;
+    font-size: 0.9em;
+  }
+  .login-container p {
+    font-size: 0.85em;
+  }
+}
